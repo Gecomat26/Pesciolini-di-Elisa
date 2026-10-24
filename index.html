@@ -1,0 +1,544 @@
+<title>Pesciolini di Elisa</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Orecchini a forma di pesce fatti a mano in pasta Das e Fimo, dipinti con colori acrilici e glassati con resina UV.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: banco di pesci. Fondo bianco gesso, inchiostro blu notte, foto colorate protagoniste, UI silenziosa. */
+:root{
+  --bg:#F4F6F5; --surface:#FFFFFF; --tint:#E8EDF8;
+  --ink:#13214F; --muted:#56608A; --line:#D9DEEA;
+  --cobalt:#2342B0; --on-cobalt:#FFFFFF; --coral:#D8443C; --gold:#B58A12;
+  --shadow:0 1px 2px rgba(19,33,79,.06),0 8px 24px rgba(19,33,79,.08);
+  --f-display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0D1430; --surface:#151F45; --tint:#1B2757;
+  --ink:#EEF1FB; --muted:#A5AED2; --line:#2A3664;
+  --cobalt:#4C6BFF; --on-cobalt:#FFFFFF; --coral:#FF7A70; --gold:#E3B94A;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1430; --surface:#151F45; --tint:#1B2757;
+  --ink:#EEF1FB; --muted:#A5AED2; --line:#2A3664;
+  --cobalt:#4C6BFF; --on-cobalt:#FFFFFF; --coral:#FF7A70; --gold:#E3B94A;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--f-display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.015em}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font:600 .78rem/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.fish{width:1.6em;height:.8em;fill:currentColor;flex:none}
+
+/* bottoni */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:46px;padding:0 1.25rem;border-radius:999px;border:2px solid var(--cobalt);background:var(--cobalt);color:var(--on-cobalt);font-weight:600;text-decoration:none;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.sm{min-height:38px;padding:0 1rem;font-size:.92rem}
+.btn[disabled],.btn.in-cart{background:transparent;color:var(--muted);border-color:var(--line);cursor:default;transform:none}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:1.5rem;min-height:68px}
+.logo{display:flex;align-items:center;gap:.6rem;font:800 1.25rem/1 var(--f-display);text-decoration:none;color:var(--cobalt)}
+.logo span{color:var(--ink)}
+.logo .fish{width:2.1rem;height:1.05rem}
+nav.main{display:flex;gap:1.5rem;margin-left:auto;font-weight:500}
+nav.main a{text-decoration:none;color:var(--muted);padding:.4rem 0}
+nav.main a:hover{color:var(--ink)}
+.cart-btn{position:relative;display:flex;align-items:center;gap:.5rem;min-height:44px;padding:0 1rem;border-radius:999px;border:2px solid var(--ink);background:transparent;font-weight:600}
+.cart-btn b{display:inline-grid;place-items:center;min-width:1.5rem;height:1.5rem;padding:0 .3rem;border-radius:999px;background:var(--coral);color:#fff;font-size:.8rem}
+@media (max-width:760px){nav.main{display:none}.cart-btn{margin-left:auto}}
+@media (max-width:480px){.bar{gap:.75rem}.logo{font-size:1.1rem}.logo .fish{width:1.6rem}.cart-btn{padding:0 .8rem}.cart-btn .cl{display:none}}
+
+/* hero */
+.hero{padding-block:clamp(2rem,5vw,4.5rem) clamp(1.5rem,3vw,2.5rem)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);align-items:center}
+.hero h1{font-size:clamp(2.5rem,6.4vw,5rem);font-weight:800;margin:1rem 0 1.25rem}
+.hero h1 em{font-style:normal;color:var(--cobalt)}
+.hero .lead{font-size:clamp(1.05rem,1.6vw,1.2rem);color:var(--muted);max-width:34em}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.facts{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin:2rem 0 0;padding:0;list-style:none;font-size:.92rem;font-weight:600}
+.facts li{display:flex;align-items:center;gap:.5rem}
+.facts .fish{color:var(--coral)}
+.school{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.6rem,1.6vw,1.1rem);align-items:start}
+.school figure{margin:0;border-radius:18px;overflow:hidden;background:var(--tint);box-shadow:var(--shadow);aspect-ratio:3/4}
+.school figure:nth-child(1){margin-top:2.5rem}
+.school figure:nth-child(3){margin-top:1.25rem}
+.school img{width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){.hero .wrap{grid-template-columns:minmax(0,1fr)}}
+
+/* banco di pesci (divisore) */
+.shoal{display:flex;justify-content:space-between;gap:.5rem;padding-block:1.25rem;overflow:hidden}
+.shoal .fish{width:2.6rem;height:1.3rem;flex:none}
+.shoal .fish:nth-child(even){transform:scaleX(-1) translateY(6px)}
+.shoal .fish:nth-child(3n){transform:translateY(-5px)}
+@media (max-width:640px){.shoal .fish:nth-child(n+8){display:none}}
+
+/* negozio */
+section{padding-block:clamp(2.5rem,6vw,5rem)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1rem 2rem;margin-bottom:2rem}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3.2rem);font-weight:800}
+.sec-head p{color:var(--muted);max-width:30em}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.75rem}
+.chip{min-height:40px;padding:0 1.1rem;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);font-weight:600;font-size:.92rem}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.5rem}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.card .ph{position:relative;display:block;width:100%;padding:0;border:0;background:var(--tint);aspect-ratio:1/1.12;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.card .tag{position:absolute;left:.75rem;top:.75rem;padding:.25rem .65rem;border-radius:999px;background:var(--surface);color:var(--ink);font-size:.74rem;font-weight:700;letter-spacing:.04em}
+.card .body{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.1rem 1.15rem;flex:1}
+.card h3{font-size:1.3rem;font-weight:700}
+.card .sub{color:var(--muted);font-size:.93rem;flex:1}
+.card .row{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-top:.75rem}
+.price{font:700 1.2rem var(--f-display);font-variant-numeric:tabular-nums}
+
+/* laboratorio */
+.lab{background:var(--tint)}
+.lab .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.steps{list-style:none;margin:1.75rem 0 0;padding:0;display:grid;gap:1.25rem;counter-reset:s}
+.steps li{display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:.9rem;counter-increment:s}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:2.6rem;height:2.6rem;border-radius:50% 50% 50% 8px;background:var(--cobalt);color:var(--on-cobalt);font:700 1.05rem var(--f-display)}
+.steps h3{font-size:1.15rem;margin-bottom:.15rem}
+.steps p{color:var(--muted);font-size:.96rem}
+.mosaic{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.75rem}
+.mosaic figure{margin:0;position:relative;border-radius:16px;overflow:hidden;background:var(--surface);min-width:0}
+.mosaic img,.mosaic video{width:100%;height:100%;object-fit:cover}
+.mosaic figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.6rem .8rem .6rem;background:linear-gradient(transparent,rgba(8,14,40,.78));color:#fff;font-size:.82rem;font-weight:500}
+.m-video{grid-column:span 3;grid-row:span 2;aspect-ratio:9/16}
+.m-a{grid-column:span 3;aspect-ratio:1/1}
+.m-b{grid-column:span 3;aspect-ratio:1/1}
+.m-c{grid-column:span 6;aspect-ratio:16/8}
+.m-d{grid-column:span 3;aspect-ratio:4/3}
+.m-e{grid-column:span 3;aspect-ratio:4/3}
+@media (max-width:860px){.lab .wrap{grid-template-columns:minmax(0,1fr)}}
+
+/* materiali */
+.mats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
+.mat{padding:1.5rem;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+.mat .fish{color:var(--cobalt);width:2.4rem;height:1.2rem;margin-bottom:.9rem}
+.mat h3{font-size:1.25rem;margin-bottom:.4rem}
+.mat p{color:var(--muted);font-size:.96rem}
+
+/* spedizioni */
+.ship{background:var(--ink);color:var(--bg)}
+.ship .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem}
+.ship h2{grid-column:1/-1;font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800}
+.ship h3{font-size:1.1rem;margin-bottom:.3rem;color:var(--bg)}
+.ship p{opacity:.8;font-size:.96rem}
+
+footer{padding-block:2.5rem 3rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem 3rem}
+footer p,footer li{color:var(--muted);font-size:.92rem}
+footer ul{list-style:none;margin:.5rem 0 0;padding:0;display:grid;gap:.2rem}
+footer .logo{margin-bottom:.5rem}
+
+/* sovrapposizioni: scheda prodotto e carrello */
+.veil{position:fixed;inset:0;z-index:100;background:rgba(8,14,40,.55);opacity:0;pointer-events:none;transition:opacity .2s}
+.veil.on{opacity:1;pointer-events:auto}
+.modal{position:fixed;z-index:110;left:50%;top:50%;width:min(880px,calc(100% - 24px));max-height:calc(100% - 24px);transform:translate(-50%,-46%);opacity:0;pointer-events:none;background:var(--surface);border-radius:22px;overflow:auto;box-shadow:var(--shadow);transition:opacity .2s,transform .2s}
+.modal.on{opacity:1;transform:translate(-50%,-50%);pointer-events:auto}
+.modal .in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.modal .pic{background:var(--tint);min-height:280px}
+.modal .pic img{width:100%;height:100%;object-fit:cover;max-height:78vh}
+.modal .info{padding:clamp(1.25rem,3vw,2rem);display:flex;flex-direction:column;gap:1rem}
+.modal h2{font-size:clamp(1.8rem,3.4vw,2.4rem);font-weight:800}
+.modal .specs{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;font-size:.95rem}
+.modal .specs li{display:flex;gap:.6rem;align-items:flex-start}
+.modal .specs .fish{color:var(--coral);margin-top:.35em}
+.modal .desc{color:var(--muted)}
+.x{position:absolute;right:.75rem;top:.75rem;z-index:2;width:42px;height:42px;border-radius:50%;border:0;background:var(--surface);color:var(--ink);font-size:1.4rem;line-height:1;box-shadow:var(--shadow)}
+@media (max-width:700px){.modal .in{grid-template-columns:minmax(0,1fr)}.modal .pic{min-height:0}.modal .pic img{max-height:44vh}}
+
+.drawer{position:fixed;z-index:120;right:0;top:0;bottom:0;width:min(440px,100%);background:var(--bg);border-left:1px solid var(--line);display:flex;flex-direction:column;transform:translateX(105%);transition:transform .28s;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.drawer.on{transform:none}
+.d-head{display:flex;align-items:center;justify-content:space-between;padding:1rem max(16px,env(safe-area-inset-right,0px)) 1rem 1.25rem;border-bottom:1px solid var(--line)}
+.d-head h2{font-size:1.5rem;font-weight:800}
+.d-head .x{position:static;box-shadow:none;border:1.5px solid var(--line)}
+.d-body{flex:1;overflow:auto;padding:1.25rem max(16px,env(safe-area-inset-right,0px)) 1.25rem 1.25rem}
+.d-foot{padding:1rem max(16px,env(safe-area-inset-right,0px)) 1.1rem 1.25rem;border-top:1px solid var(--line);background:var(--surface);display:grid;gap:.75rem}
+.line-item{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:.9rem;align-items:center;padding-block:.85rem;border-bottom:1px solid var(--line)}
+.line-item img{width:64px;height:64px;object-fit:cover;border-radius:12px;background:var(--tint)}
+.line-item h3{font-size:1.05rem}
+.line-item small{color:var(--muted)}
+.link{background:none;border:0;padding:0;color:var(--muted);text-decoration:underline;font-size:.85rem}
+.tot{display:flex;justify-content:space-between;font-size:.95rem;color:var(--muted)}
+.tot.big{color:var(--ink);font:700 1.25rem var(--f-display)}
+.empty{text-align:center;padding:3rem 1rem;color:var(--muted)}
+.empty .fish{width:4rem;height:2rem;margin:0 auto 1rem;color:var(--cobalt)}
+form.co{display:grid;gap:.9rem}
+.fld{display:grid;gap:.3rem}
+.fld label,.fld legend{font-weight:600;font-size:.88rem}
+.fld input,.fld textarea{width:100%;min-height:46px;padding:.6rem .85rem;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:inherit}
+.fld textarea{min-height:76px;resize:vertical}
+.fld input:focus,.fld textarea:focus{outline:3px solid var(--cobalt);outline-offset:1px;border-color:var(--cobalt)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.75rem}
+.three{display:grid;grid-template-columns:90px minmax(0,1fr) 70px;gap:.75rem}
+fieldset{border:0;margin:0;padding:0}
+.opt{display:flex;align-items:center;gap:.6rem;padding:.7rem .9rem;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);font-weight:500;margin-top:.4rem}
+.opt input{width:auto;min-height:0;accent-color:var(--cobalt)}
+.note{font-size:.88rem;color:var(--muted)}
+.summary{white-space:pre-wrap;font:500 .88rem/1.55 var(--f-body);padding:1rem;border-radius:14px;background:var(--surface);border:1px solid var(--line);max-height:260px;overflow:auto}
+.ok{display:flex;gap:.7rem;align-items:center;font:700 1.3rem var(--f-display);margin-bottom:.75rem}
+.ok .fish{color:var(--coral);width:2.4rem;height:1.2rem}
+.toast{position:fixed;left:50%;bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);z-index:200;padding:.7rem 1.2rem;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600;font-size:.92rem;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:calc(100% - 32px)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="fish" viewBox="0 0 48 24"><path d="M2 12C10 1 27 1 35 12 27 23 10 23 2 12Z"/><path d="M33 12 46 3.5V20.5Z"/><circle cx="11" cy="11" r="2" fill="var(--bg)"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="Pesciolini di Elisa, inizio pagina"><svg class="fish"><use href="#fish"/></svg>Pesciolini <span>di Elisa</span></a>
+    <nav class="main" aria-label="Sezioni">
+      <a href="#orecchini">Orecchini</a>
+      <a href="#laboratorio">Come nascono</a>
+      <a href="#materiali">Materiali</a>
+      <a href="#spedizioni">Spedizioni</a>
+    </nav>
+    <button class="cart-btn" data-action="open-cart" aria-label="Apri il carrello"><svg class="fish" style="width:1.4em"><use href="#fish"/></svg><span class="cl">Carrello</span> <b id="count">0</b></button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Orecchini fatti a mano</p>
+        <h1>Piccoli pesci di argilla, <em>dipinti uno a uno.</em></h1>
+        <p class="lead">Pendenti modellati in pasta Das e Fimo, decorati a mano con colori acrilici e glassati con resina UV. Ogni paio è un pezzo unico.</p>
+        <div class="cta">
+          <a class="btn" href="#orecchini">Scegli il tuo paio</a>
+          <a class="btn ghost" href="#laboratorio">Guarda come nascono</a>
+        </div>
+        <ul class="facts">
+          <li><svg class="fish"><use href="#fish"/></svg>Pezzi unici</li>
+          <li><svg class="fish"><use href="#fish"/></svg>Resina UV lucida</li>
+          <li><svg class="fish"><use href="#fish"/></svg>Ganci senza nichel</li>
+        </ul>
+      </div>
+      <div class="school" aria-hidden="true">
+        <figure><img src="img/notte-oro.jpg" alt=""></figure>
+        <figure><img src="img/laguna.jpg" alt=""></figure>
+        <figure><img src="img/foglia-viola.jpg" alt=""></figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap shoal" aria-hidden="true" id="shoal"></div>
+
+  <section id="orecchini">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Gli orecchini</h2>
+        <p>Ogni paio è dipinto a mano e può differire leggermente dalla foto. Quando un paio è venduto, non è più disponibile.</p>
+      </div>
+      <div class="chips" role="group" aria-label="Filtra per stile" id="chips"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="lab" id="laboratorio">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Il laboratorio</p>
+        <h2 style="font-size:clamp(2rem,4.4vw,3.2rem);font-weight:800;margin-top:.8rem">Dal panetto al pesciolino</h2>
+        <p style="color:var(--muted);margin-top:1rem;max-width:32em">Nessuno stampo industriale e nessuna copia: ogni pesce passa dalle mie mani per cinque tappe.</p>
+        <ol class="steps">
+          <li><div><h3>Si modella</h3><p>La pasta Das o Fimo viene stesa e tagliata con le formine a pesce, poi rifinita a mano.</p></div></li>
+          <li><div><h3>Si asciuga o si cuoce</h3><p>Il Das asciuga all'aria, il Fimo si cuoce. Poi si fora il pendente e si leviga il bordo.</p></div></li>
+          <li><div><h3>Si dipinge</h3><p>Colori acrilici stesi con il pennello: righe, cuori, occhi, code a contrasto.</p></div></li>
+          <li><div><h3>Si glassa con resina UV</h3><p>Uno strato di resina rende il colore lucido e protegge il pendente. Si indurisce sotto la lampada UV.</p></div></li>
+          <li><div><h3>Si monta</h3><p>Un anellino, un gancetto ipoallergenico e il tappino trasparente. Il paio è pronto.</p></div></li>
+        </ol>
+      </div>
+      <div class="mosaic">
+        <figure class="m-video"><video id="labvideo" src="img/laboratorio.mp4" poster="img/laboratorio-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video del mio banco di lavoro"></video><figcaption>Il mio banco di lavoro</figcaption></figure>
+        <figure class="m-a"><img loading="lazy" src="img/formine.jpg" alt="Formine a pesce in metallo accanto a un vassoio di pendenti" style="object-position:70% 70%"><figcaption>Le formine a pesce</figcaption></figure>
+        <figure class="m-b"><img loading="lazy" src="img/lampada.jpg" alt="Lampada UV e attrezzi sul banco di lavoro" style="object-position:65% 40%"><figcaption>La lampada UV</figcaption></figure>
+        <figure class="m-c"><img loading="lazy" src="img/lab-table.jpg" alt="Tanti pesci bianchi ancora da dipingere, allineati su una tavola di legno"><figcaption>Pesci in attesa del colore</figcaption></figure>
+        <figure class="m-d"><img loading="lazy" src="img/lab-testa-gialla.jpg" alt="Sei pesci con la testa gialla e un occhio blu"><figcaption>Occhi blu, teste gialle</figcaption></figure>
+        <figure class="m-e"><img loading="lazy" src="img/lab-occhi-blu.jpg" alt="Sei pesci bianchi con un grande occhio blu"><figcaption>Primi occhi dipinti</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="materiali">
+    <div class="wrap">
+      <div class="sec-head"><h2>Cosa c'è in un paio</h2></div>
+      <div class="mats">
+        <div class="mat"><svg class="fish"><use href="#fish"/></svg><h3>Pendenti in argilla</h3><p>Pasta Das e pasta Fimo, decorati a mano con colori acrilici e glassati con resina UV.</p></div>
+        <div class="mat"><svg class="fish"><use href="#fish"/></svg><h3>Ganci ipoallergenici</h3><p>Gancetti placcati in materiale ipoallergenico, privi di nichel, con tappino di chiusura trasparente.</p></div>
+        <div class="mat"><svg class="fish"><use href="#fish"/></svg><h3>Pezzo unico</h3><p>Fatto interamente a mano. Colori e pennellate cambiano da un paio all'altro, ed è questo il bello.</p></div>
+        <div class="mat"><svg class="fish"><use href="#fish"/></svg><h3>Un po' di cura</h3><p>Toglili prima di doccia, mare e piscina e riponili all'asciutto. Il pesce dura di più.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ship" id="spedizioni">
+    <div class="wrap">
+      <h2>Spedizioni e pagamenti</h2>
+      <div><h3>Spedizione in Italia</h3><p id="ship-p"></p></div>
+      <div><h3>Preparazione</h3><p>Ogni ordine viene imballato a mano, in una bustina trasparente, pronto da regalare.</p></div>
+      <div><h3>Pagamento</h3><p id="pay-p"></p></div>
+      <div><h3>Recesso</h3><p>Hai 14 giorni dalla consegna per ripensarci, come previsto per gli acquisti a distanza.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><a class="logo" href="#top"><svg class="fish"><use href="#fish"/></svg>Pesciolini <span>di Elisa</span></a><p>Orecchini fatti a mano.</p></div>
+    <div><strong>Contatti</strong><ul id="contacts"></ul></div>
+    <div><strong>Il negozio</strong><ul><li><a href="#orecchini">Orecchini</a></li><li><a href="#laboratorio">Come nascono</a></li><li><a href="#spedizioni">Spedizioni</a></li></ul></div>
+  </div>
+</footer>
+
+<!-- scheda prodotto -->
+<div class="veil" id="veil" data-action="close-all"></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="m-title" aria-hidden="true"></div>
+
+<!-- carrello -->
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="d-title" aria-hidden="true">
+  <div class="d-head"><h2 id="d-title">Il tuo carrello</h2><button class="x" data-action="close-all" aria-label="Chiudi">×</button></div>
+  <div class="d-body" id="d-body"></div>
+  <div class="d-foot" id="d-foot"></div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ---------- Impostazioni del negozio: modifica qui ---------- */
+const CONFIG = {
+  whatsapp: "",            // es. "393331234567" (prefisso senza +). Se vuoto, il pulsante WhatsApp non compare
+  email: "",               // es. "ciao@tuodominio.it"
+  instagram: "",           // es. "pesciolini_di_elisa"
+  shippingCost: 3.9,       // euro, spedizione in Italia
+  freeShippingFrom: 40,    // euro, spedizione gratuita sopra questa cifra
+  payments: ["Bonifico bancario", "PayPal"]
+};
+
+/* ---------- Catalogo: un oggetto per ogni paio ---------- */
+const PRODUCTS = [
+  {id:"marinaio", nome:"Marinaio", sub:"Bianco con righe blu cobalto", prezzo:10, img:"img/mare-righe.jpg", cat:["blu"],
+   desc:"Un pesce bianco attraversato da righe blu intenso. Semplice, pulito, di quelli che stanno bene con tutto."},
+  {id:"sardina-blu", nome:"Sardina blu", sub:"Blu cobalto con righe bianche", prezzo:10, img:"img/indossato.jpg", cat:["blu"],
+   desc:"Blu profondo e righe bianche pennellate a mano. Nella foto lo vedi indossato."},
+  {id:"notte-oro", nome:"Notte d'oro", sub:"Cerchi blu bordati d'oro", prezzo:10, img:"img/notte-oro.jpg", cat:["blu"],
+   desc:"Corpo bianco lucido con grandi macchie blu notte bordate da una pennellata dorata."},
+  {id:"blu-oro", nome:"Blu e oro", sub:"Blu cobalto con righe dorate", prezzo:10, img:"img/blu-oro.jpg", cat:["blu"],
+   desc:"Un pesce blu con la testa bianca e righe e pinne color oro. Il più elegante del banco."},
+  {id:"cuore-righe", nome:"Cuore a righe", sub:"Righe blu e cuore rosso", prezzo:10, img:"img/cuore-righe.jpg", cat:["blu"],
+   desc:"Bianco, quattro righe blu e un cuore rosso proprio dove dovrebbe stare."},
+  {id:"arlecchino", nome:"Arlecchino", sub:"Lilla, giallo, azzurro e coda rossa", prezzo:10, img:"img/arlecchino.jpg", cat:["colorati"],
+   desc:"Testa lilla, fianchi gialli e azzurri con trattini blu, coda rossa con pennellate bianche. Tanto colore in pochi centimetri."},
+  {id:"laguna", nome:"Laguna", sub:"Turchese, coda rossa, occhio bianco", prezzo:10, img:"img/laguna.jpg", cat:["colorati"],
+   desc:"Turchese con sottili righe verde chiaro, un triangolo rosso sul fianco e la coda rossa."},
+  {id:"cuoricino", nome:"Cuoricino", sub:"Verde lime con cuore rosa", prezzo:10, img:"img/cuoricino.jpg", cat:["verde"],
+   desc:"Verde lime acceso e un cuore rosa al centro. Piccolo, allegro, facile da regalare."},
+  {id:"foglia-viola", nome:"Foglia viola", sub:"Viola con ramo rosa", prezzo:10, img:"img/foglia-viola.jpg", cat:["verde"],
+   desc:"Viola intenso con un ramo di foglioline rosa disegnato a mano su tutto il corpo."}
+];
+const FILTERS = [["tutti","Tutti"],["blu","Blu e oro"],["colorati","Colorati"],["verde","Verde e viola"]];
+const SPECS = [
+  "Pendente in pasta Das o Fimo, decorato a mano con colori acrilici",
+  "Glassato con resina UV, lucido e resistente",
+  "Gancio placcato ipoallergenico, senza nichel, con tappino trasparente",
+  "Pezzo unico fatto a mano: può differire leggermente dalla foto"
+];
+
+/* ---------- Utilità ---------- */
+const $ = s => document.querySelector(s);
+const eur = n => new Intl.NumberFormat("it-IT",{style:"currency",currency:"EUR"}).format(n);
+const byId = id => PRODUCTS.find(p => p.id === id);
+const fishSvg = (cls="") => `<svg class="fish ${cls}"><use href="#fish"/></svg>`;
+let cart = [], filter = "tutti", view = "cart", lastFocus = null, order = null;
+try { cart = (JSON.parse(localStorage.getItem("pdE-cart")||"[]")).filter(id => byId(id)); } catch(e){ cart = []; }
+const save = () => { try { localStorage.setItem("pdE-cart", JSON.stringify(cart)); } catch(e){} };
+let toastT;
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("on"); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove("on"),2200); }
+
+/* ---------- Banco di pesci decorativo ---------- */
+(function(){
+  const cols=["var(--cobalt)","var(--coral)","var(--gold)","#2FA7A0","#8AB82F","#8A4FD0","var(--cobalt)","var(--coral)","var(--gold)","#2FA7A0","#8AB82F","#8A4FD0"];
+  $("#shoal").innerHTML = cols.map(c=>`<svg class="fish" style="color:${c}"><use href="#fish"/></svg>`).join("");
+})();
+
+/* ---------- Catalogo ---------- */
+function renderChips(){
+  $("#chips").innerHTML = FILTERS.map(([k,l]) => `<button class="chip" data-action="filter" data-k="${k}" aria-pressed="${k===filter}">${l}</button>`).join("");
+}
+function renderGrid(){
+  const list = PRODUCTS.filter(p => filter==="tutti" || p.cat.includes(filter));
+  $("#grid").innerHTML = list.map(p => {
+    const inCart = cart.includes(p.id);
+    return `<article class="card">
+      <button class="ph" data-action="open-product" data-id="${p.id}" aria-label="Guarda ${p.nome}">
+        <img loading="lazy" src="${p.img}" alt="Orecchini ${p.nome}: ${p.sub.toLowerCase()}"><span class="tag">Pezzo unico</span>
+      </button>
+      <div class="body">
+        <h3>${p.nome}</h3><p class="sub">${p.sub}</p>
+        <div class="row"><span class="price">${eur(p.prezzo)}</span>
+        <button class="btn sm ${inCart?"in-cart":""}" data-action="add" data-id="${p.id}" ${inCart?"disabled":""}>${inCart?"Nel carrello":"Aggiungi"}</button></div>
+      </div></article>`;
+  }).join("");
+}
+
+/* ---------- Scheda prodotto ---------- */
+function openProduct(id){
+  const p = byId(id); if(!p) return;
+  const inCart = cart.includes(id);
+  $("#modal").innerHTML = `<button class="x" data-action="close-all" aria-label="Chiudi">×</button>
+   <div class="in"><div class="pic"><img src="${p.img}" alt="Orecchini ${p.nome}"></div>
+   <div class="info"><p class="eyebrow">Pezzo unico</p><h2 id="m-title">${p.nome}</h2>
+   <p class="price" style="font-size:1.6rem">${eur(p.prezzo)}</p>
+   <p class="desc">${p.desc}</p>
+   <ul class="specs">${SPECS.map(s=>`<li>${fishSvg()}<span>${s}</span></li>`).join("")}</ul>
+   <button class="btn ${inCart?"in-cart":""}" data-action="add" data-id="${p.id}" ${inCart?"disabled":""}>${inCart?"Già nel carrello":"Aggiungi al carrello"}</button></div></div>`;
+  openLayer("modal");
+}
+
+/* ---------- Livelli (scheda e carrello) ---------- */
+function openLayer(which){
+  lastFocus = document.activeElement;
+  closeLayers(true);
+  $("#veil").classList.add("on");
+  const el = $("#"+which); el.classList.add("on"); el.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+  setTimeout(()=>{ const f = el.querySelector(".x"); if(f) f.focus(); },60);
+}
+function closeLayers(keep){
+  for(const id of ["modal","drawer"]){ const el=$("#"+id); el.classList.remove("on"); el.setAttribute("aria-hidden","true"); }
+  if(!keep){ $("#veil").classList.remove("on"); document.body.style.overflow=""; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+}
+document.addEventListener("keydown", e => { if(e.key==="Escape") closeLayers(); });
+
+/* ---------- Carrello ---------- */
+function totals(){
+  const sub = cart.reduce((s,id)=>s+byId(id).prezzo,0);
+  const ship = !cart.length ? 0 : (sub>=CONFIG.freeShippingFrom ? 0 : CONFIG.shippingCost);
+  return {sub, ship, tot: sub+ship};
+}
+function updateCount(){ $("#count").textContent = cart.length; }
+function addToCart(id){
+  if(cart.includes(id)) return;
+  cart.push(id); save(); updateCount(); renderGrid();
+  const p=byId(id); toast(p.nome+" è nel carrello");
+  if($("#modal").classList.contains("on")) openProduct(id);
+}
+function removeFromCart(id){ cart = cart.filter(x=>x!==id); save(); updateCount(); renderGrid(); renderDrawer(); }
+
+function renderDrawer(){
+  const body=$("#d-body"), foot=$("#d-foot"), t=totals();
+  if(view==="cart"){
+    $("#d-title").textContent="Il tuo carrello";
+    if(!cart.length){
+      body.innerHTML=`<div class="empty">${fishSvg()}<p>Il carrello è vuoto.<br>I pesci ti aspettano.</p></div>`;
+      foot.innerHTML=`<button class="btn" data-action="close-all">Vai agli orecchini</button>`; return;
+    }
+    body.innerHTML = cart.map(id=>{const p=byId(id);return `<div class="line-item"><img src="${p.img}" alt=""><div><h3>${p.nome}</h3><small>Pezzo unico</small><br><button class="link" data-action="remove" data-id="${id}">Rimuovi</button></div><span class="price">${eur(p.prezzo)}</span></div>`}).join("");
+    const missing = CONFIG.freeShippingFrom - t.sub;
+    foot.innerHTML = `${t.ship>0&&missing>0?`<p class="note">Ancora ${eur(missing)} per la spedizione gratuita.</p>`:""}
+      <div class="tot"><span>Subtotale</span><span>${eur(t.sub)}</span></div>
+      <div class="tot"><span>Spedizione</span><span>${t.ship?eur(t.ship):"Gratis"}</span></div>
+      <div class="tot big"><span>Totale</span><span>${eur(t.tot)}</span></div>
+      <button class="btn" data-action="checkout">Procedi all'ordine</button>`;
+  } else if(view==="checkout"){
+    $("#d-title").textContent="I tuoi dati";
+    body.innerHTML = `<form class="co" id="co" autocomplete="on">
+      <div class="fld"><label for="f-nome">Nome e cognome</label><input id="f-nome" name="nome" required autocomplete="name"></div>
+      <div class="two"><div class="fld"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+      <div class="fld"><label for="f-tel">Telefono</label><input id="f-tel" name="tel" type="tel" autocomplete="tel"></div></div>
+      <div class="fld"><label for="f-ind">Indirizzo di spedizione</label><input id="f-ind" name="ind" required autocomplete="street-address"></div>
+      <div class="three"><div class="fld"><label for="f-cap">CAP</label><input id="f-cap" name="cap" required inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code"></div>
+      <div class="fld"><label for="f-citta">Città</label><input id="f-citta" name="citta" required autocomplete="address-level2"></div>
+      <div class="fld"><label for="f-prov">Prov.</label><input id="f-prov" name="prov" required pattern="[A-Za-z]{2}" maxlength="2" autocomplete="address-level1"></div></div>
+      <fieldset class="fld"><legend>Come preferisci pagare</legend>
+        ${CONFIG.payments.map((m,i)=>`<label class="opt"><input type="radio" name="pag" value="${m}" ${i===0?"checked":""}>${m}</label>`).join("")}</fieldset>
+      <div class="fld"><label for="f-note">Note (facoltativo)</label><textarea id="f-note" name="note" placeholder="Ad esempio: è un regalo"></textarea></div>
+      <p class="note">Il pagamento non avviene online. Dopo il tuo ordine ricevi i dati per pagare e conferma la spedizione.</p>
+    </form>`;
+    foot.innerHTML = `<div class="tot big"><span>Totale</span><span>${eur(t.tot)}</span></div>
+      <button class="btn" type="submit" form="co">Prepara il mio ordine</button>
+      <button class="btn ghost sm" data-action="back">Torna al carrello</button>`;
+    const f=$("#co"); f.addEventListener("submit", submitOrder);
+  } else {
+    $("#d-title").textContent="Ordine pronto";
+    const wa = CONFIG.whatsapp ? `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(order.text)}` : "";
+    body.innerHTML = `<div class="ok">${fishSvg()}Grazie, ${order.nome.split(" ")[0]}!</div>
+      <p class="note" style="margin-bottom:1rem">L'ordine <strong>${order.num}</strong> non è ancora stato inviato: ${wa?"mandamelo su WhatsApp":"copia il riepilogo e mandamelo"}${CONFIG.email?` o scrivi a <strong>${CONFIG.email}</strong>`:""}. Ti rispondo con i dati per il pagamento e blocco i tuoi pesci.</p>
+      <pre class="summary" id="sum"></pre>`;
+    $("#sum").textContent = order.text;
+    foot.innerHTML = `${wa?`<a class="btn" href="${wa}" target="_blank" rel="noopener">Invia su WhatsApp</a>`:""}
+      <button class="btn ${wa?"ghost":""}" data-action="copy">Copia il riepilogo</button>
+      <button class="btn ghost sm" data-action="done">Ho inviato l'ordine</button>`;
+  }
+}
+function submitOrder(e){
+  e.preventDefault();
+  const d = Object.fromEntries(new FormData(e.target).entries());
+  const t = totals();
+  const now = new Date(), pad = n=>String(n).padStart(2,"0");
+  const num = "PE-"+String(now.getFullYear()).slice(2)+pad(now.getMonth()+1)+pad(now.getDate())+"-"+Math.floor(100+Math.random()*900);
+  const rows = cart.map(id=>`• ${byId(id).nome} — ${eur(byId(id).prezzo)}`).join("\n");
+  const text = `Ciao! Vorrei ordinare (${num}):\n\n${rows}\n\nSubtotale: ${eur(t.sub)}\nSpedizione: ${t.ship?eur(t.ship):"gratis"}\nTotale: ${eur(t.tot)}\n\nNome: ${d.nome}\nEmail: ${d.email}${d.tel?"\nTelefono: "+d.tel:""}\nIndirizzo: ${d.ind}, ${d.cap} ${d.citta} (${d.prov.toUpperCase()})\nPagamento: ${d.pag}${d.note?"\nNote: "+d.note:""}`;
+  order = {num, nome:d.nome, text};
+  view="done"; renderDrawer(); $("#d-body").scrollTop=0;
+}
+function openCart(){ view = cart.length?"cart":"cart"; renderDrawer(); openLayer("drawer"); }
+
+/* ---------- Eventi ---------- */
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-action]"); if(!b) return;
+  const a=b.dataset.action, id=b.dataset.id;
+  if(a==="filter"){ filter=b.dataset.k; renderChips(); renderGrid(); }
+  else if(a==="open-product") openProduct(id);
+  else if(a==="add") addToCart(id);
+  else if(a==="remove") removeFromCart(id);
+  else if(a==="open-cart") openCart();
+  else if(a==="close-all") closeLayers();
+  else if(a==="checkout"){ view="checkout"; renderDrawer(); setTimeout(()=>{const f=$("#f-nome"); if(f) f.focus();},50); }
+  else if(a==="back"){ view="cart"; renderDrawer(); }
+  else if(a==="copy"){
+    const ta=$("#sum");
+    const fallback=()=>{ const r=document.createRange(); r.selectNodeContents(ta); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast("Seleziona e copia il testo"); };
+    try{ navigator.clipboard.writeText(order.text).then(()=>toast("Riepilogo copiato"),fallback); }catch(err){ fallback(); }
+  }
+  else if(a==="done"){ cart=[]; save(); updateCount(); renderGrid(); view="cart"; closeLayers(); toast("A presto!"); }
+});
+
+/* ---------- Testi che dipendono dalle impostazioni ---------- */
+$("#ship-p").textContent = `${eur(CONFIG.shippingCost)} per ordine, gratis da ${eur(CONFIG.freeShippingFrom)}.`;
+$("#pay-p").textContent = `${CONFIG.payments.join(" o ")}. Ti scrivo i dati dopo il tuo ordine.`;
+(function(){
+  const c=[];
+  if(CONFIG.email) c.push(`<li>${CONFIG.email}</li>`);
+  if(CONFIG.whatsapp) c.push(`<li>WhatsApp +${CONFIG.whatsapp}</li>`);
+  if(CONFIG.instagram) c.push(`<li><a href="https://instagram.com/${CONFIG.instagram}" target="_blank" rel="noopener">Instagram @${CONFIG.instagram}</a></li>`);
+  $("#contacts").innerHTML = c.length ? c.join("") : "<li>Per ordinare usa il carrello.</li>";
+})();
+
+/* ---------- Video del banco di lavoro ---------- */
+(function(){
+  const v=$("#labvideo"); if(!v) return;
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){ v.controls=true; return; }
+  const p=v.play(); if(p&&p.catch) p.catch(()=>{ v.controls=true; });
+})();
+
+renderChips(); renderGrid(); updateCount(); renderDrawer();
+</script>
