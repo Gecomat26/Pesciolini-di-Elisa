@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pesciolini di Elisa Social</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Orecchini a forma di pesce fatti a mano, dipinti uno a uno.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: colonna unica da telefono, pagina "link in bio" per Instagram e Facebook. Stessa identità del negozio. */
+:root{
+  --bg:#F4F6F5; --surface:#FFFFFF; --tint:#E8EDF8;
+  --ink:#13214F; --muted:#56608A; --line:#D9DEEA;
+  --cobalt:#2342B0; --on-cobalt:#FFFFFF; --coral:#D8443C;
+  --f-display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0D1430; --surface:#151F45; --tint:#1B2757;
+  --ink:#EEF1FB; --muted:#A5AED2; --line:#2A3664;
+  --cobalt:#4C6BFF; --on-cobalt:#FFFFFF; --coral:#FF7A70; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1430; --surface:#151F45; --tint:#1B2757;
+  --ink:#EEF1FB; --muted:#A5AED2; --line:#2A3664;
+  --cobalt:#4C6BFF; --on-cobalt:#FFFFFF; --coral:#FF7A70; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+h1,h2{font-family:var(--f-display);margin:0;line-height:1.1;letter-spacing:-.015em;text-wrap:balance}
+p{margin:0}a{color:inherit}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:12px}
+.page{max-width:520px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:2.25rem 2.5rem;display:grid;gap:1.75rem}
+.who{text-align:center;display:grid;justify-items:center;gap:.9rem}
+.avatar{width:96px;height:96px;border-radius:50%;background:var(--cobalt);display:grid;place-items:center;box-shadow:0 0 0 5px var(--bg),0 0 0 7px var(--coral)}
+.avatar svg{width:56px;height:28px;fill:#fff}
+.who h1{font-size:clamp(2rem,9vw,2.6rem);font-weight:800}
+.who h1 em{font-style:normal;color:var(--cobalt)}
+.who p{color:var(--muted);max-width:26em}
+.links{display:grid;gap:.75rem}
+.link{display:flex;align-items:center;justify-content:center;min-height:56px;padding:0 1.25rem;border-radius:999px;border:2px solid var(--ink);background:var(--surface);color:var(--ink);font-weight:700;text-decoration:none;text-align:center;transition:transform .15s}
+.link:hover{transform:translateY(-2px)}
+.link[hidden]{display:none}
+.link.main{background:var(--cobalt);border-color:var(--cobalt);color:var(--on-cobalt);font-size:1.05rem}
+.shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
+.shots a{display:block;aspect-ratio:1/1;border-radius:14px;overflow:hidden;background:var(--tint)}
+.shots img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.shots a:hover img{transform:scale(1.06)}
+.label{font:700 .78rem/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:.9rem}
+.badges{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem}
+.badges span{padding:.45rem .9rem;border-radius:999px;background:var(--tint);font-weight:600;font-size:.88rem}
+.price-box{text-align:center;padding:1.4rem;border-radius:20px;background:var(--ink);color:var(--bg)}
+.price-box strong{display:block;font:800 2.4rem/1 var(--f-display);margin-bottom:.3rem}
+.price-box p{opacity:.85;font-size:.95rem}
+footer{text-align:center;color:var(--muted);font-size:.85rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>body{margin:0}</style>
+</head>
+<body>
+
+<main class="page">
+  <header class="who">
+    <div class="avatar" aria-hidden="true"><svg viewBox="0 0 48 24"><path d="M2 12C10 1 27 1 35 12 27 23 10 23 2 12Z"/><path d="M33 12 46 3.5V20.5Z"/><circle cx="11" cy="11" r="2" fill="#2342B0"/></svg></div>
+    <h1>Pesciolini <em>di Elisa</em></h1>
+    <p>Orecchini fatti a mano in pasta Das e Fimo, dipinti uno a uno e glassati con resina UV.</p>
+  </header>
+
+  <nav class="links" aria-label="Link">
+    <a class="link main" href="index.html#orecchini">Scopri gli orecchini</a>
+    <a class="link" id="l-wa" href="#" hidden target="_blank" rel="noopener">Scrivimi su WhatsApp</a>
+    <a class="link" id="l-ig" href="#" hidden target="_blank" rel="noopener">Seguimi su Instagram</a>
+    <a class="link" id="l-fb" href="#" hidden target="_blank" rel="noopener">Pagina Facebook</a>
+    <a class="link" href="index.html#laboratorio">Guarda come nascono</a>
+  </nav>
+
+  <div class="price-box"><strong>10 €</strong><p>ogni paio, pezzo unico fatto a mano</p></div>
+
+  <section aria-labelledby="lbl-shots">
+    <p class="label" id="lbl-shots">I pesci di oggi</p>
+    <div class="shots">
+      <a href="index.html#orecchini"><img src="img/notte-oro.jpg" alt="Orecchini Notte d'oro" loading="lazy"></a>
+      <a href="index.html#orecchini"><img src="img/laguna.jpg" alt="Orecchini Laguna" loading="lazy"></a>
+      <a href="index.html#orecchini"><img src="img/cuoricino.jpg" alt="Orecchini Cuoricino" loading="lazy"></a>
+      <a href="index.html#orecchini"><img src="img/arlecchino.jpg" alt="Orecchini Arlecchino" loading="lazy"></a>
+      <a href="index.html#orecchini"><img src="img/foglia-viola.jpg" alt="Orecchini Foglia viola" loading="lazy"></a>
+      <a href="index.html#orecchini"><img src="img/mare-righe.jpg" alt="Orecchini Marinaio" loading="lazy"></a>
+      <a href="index.html#orecchini"><img src="img/indossato.jpg" alt="Orecchino Sardina blu indossato" loading="lazy"></a>
+      <a href="index.html#orecchini"><img src="img/blu-oro.jpg" alt="Orecchini Blu e oro" loading="lazy"></a>
+      <a href="index.html#orecchini"><img src="img/cuore-righe.jpg" alt="Pendente Cuore a righe" loading="lazy"></a>
+    </div>
+  </section>
+
+  <div class="badges" aria-label="Caratteristiche">
+    <span>Dipinti a mano</span><span>Resina UV lucida</span><span>Ganci senza nichel</span><span>Pezzi unici</span>
+  </div>
+
+  <footer>Pesciolini di Elisa · fatti a mano con pazienza</footer>
+</main>
+
+<script>
+/* Inserisci qui i tuoi contatti: i pulsanti vuoti restano nascosti */
+const SOCIAL = {
+  whatsapp: "",   // es. "393331234567"
+  instagram: "",  // es. "pesciolini_di_elisa"
+  facebook: ""    // indirizzo completo della pagina Facebook
+};
+(function(){
+  const set=(id,href)=>{const a=document.getElementById(id); if(href){a.href=href; a.hidden=false;}};
+  if(SOCIAL.whatsapp) set("l-wa","https://wa.me/"+SOCIAL.whatsapp+"?text="+encodeURIComponent("Ciao! Vorrei info sui tuoi orecchini."));
+  if(SOCIAL.instagram) set("l-ig","https://instagram.com/"+SOCIAL.instagram);
+  if(SOCIAL.facebook) set("l-fb",SOCIAL.facebook);
+})();
+</script>
+
+</body>
+</html>
